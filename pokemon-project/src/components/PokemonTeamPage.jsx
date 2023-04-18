@@ -1,43 +1,27 @@
-import React, { useState } from 'react';
-import PokemonPage from './PokemonPage';
+import React, { useContext } from 'react';
+import PokemonCard from './PokemonCard';
+import PokemonContext from './PokemonContext';
 
 function PokemonTeamPage() {
-  const [team, setTeam] = useState([]);
-
-//   const handleCatch = (pokemon) => {
-//     if (team.length >= 6) {
-//         alert('You cannot catch more than 6 Pokemon!');
-//     return;
-//     }
-//     if (team.find(p => p.id === pokemon.id)) {
-//         alert('You have already caught this Pokemon!');
-//     return;
-//     }
-//     setTeam([...team, pokemon]);
-//   }
-
-  const handleRelease = (pokemon) => {
-    setTeam(team.filter(p => p.id !== pokemon.id));
-    }  
+  const { caughtPokemon } = useContext(PokemonContext)
 
   return (
     <div>
-      <h1>My Team</h1>
-      {team.length === 0 ? (
-        <h2>You haven't caught any Pokemon yet!</h2>
+      <h2>My Team</h2>
+      {caughtPokemon.length === 0 ? (
+      <p>You haven't captured any Pokemon yet.</p>
       ) : (
-        <div>
-            <h2>List of Pokemon:</h2>
-            {team.map(pokemon => (
-                <div key={pokemon.id}>
-                <PokemonPage pokemon={pokemon} />
-                <button onClick={() => handleRelease(pokemon)}>Release</button>
+        <div className="d-flex flex-wrap" >
+          {caughtPokemon.map((pokemon) => (
+            <div key={pokemon.id} className="mx-2" style={{ flex: 1 }}>
+              <PokemonCard pokemonDetails={pokemon} />
+            </div>
+          ))}
         </div>
-      ))}
-        </div>
-        )}
+
+      )}
     </div>
-)
-}
+    );
+    }
 
 export default PokemonTeamPage;

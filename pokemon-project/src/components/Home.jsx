@@ -1,15 +1,12 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import { Row, Col } from 'react-bootstrap';
-
-
-// Components
+import { Row } from 'react-bootstrap';
 import Pokemon from "./Pokemon";
 import Loader from '../components/Loader';
 
 const Home = () => {
     const [pokemon, setPokemon] = useState([]);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
 
     const getPokemonList = async () => {
         let pokemonArray = [];
