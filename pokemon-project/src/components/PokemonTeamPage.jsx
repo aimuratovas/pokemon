@@ -7,7 +7,7 @@ function PokemonTeamPage() {
 
   return (
     <div>
-      <h2>My Team</h2>
+      <h2>MY POKEMON TEAM</h2>
       {caughtPokemon.length === 0 ? (
       <p>You haven't captured any Pokemon yet.</p>
       ) : (
